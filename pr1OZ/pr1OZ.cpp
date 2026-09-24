@@ -30,21 +30,17 @@ public:
 class Character {
 protected:
     IWeaponBehavior* weapon;
-
 public:
     Character() : weapon(nullptr) {}
-
     virtual ~Character() {
         delete weapon;
     }
-
     void SetWeapon(IWeaponBehavior* newWeapon) {
         if (weapon) {
             delete weapon;
         }
         weapon = newWeapon;
     }
-
     virtual void Fight() const {
         if (weapon) {
             weapon->UseWeapon();
@@ -60,25 +56,21 @@ public:
     Knight() {
         weapon = new SwordBehavior();
     }
-
     void Fight() const override {
         cout << "Лицар: ";
         Character::Fight();
     }
 };
-
 class King : public Character {
 public:
     King() {
         weapon = new BowBehavior();
     }
-
     void Fight() const override {
         cout << "Король: ";
         Character::Fight();
     }
 };
-
 class Troll : public Character {
 public:
     Troll() {
